@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(127, 86, 167);
+}
+
+.header {
+  width: 40%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heading {
+  font-size: 4rem;
+  color: #fff;
+  font-weight: 200;
+  letter-spacing: 0.1rem;
+}
+
+.heading span {
+  font-size: 4rem;
+  color: #efd81d;
+  transition: color 0.2s;
+}
+
+.btn {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-btn 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-btn {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.boxes {
+  width: 40%;
+  height: 100%;
+  perspective: 150rem;
+}
+
+.active.box {
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+}
+
+.box {
+  transform-style: preserve-3d;
+  transform: rotateY(45deg) rotateX(30deg);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+@keyframes boxAnim {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+.box-1 {
+  left: -25rem;
+  top: -6rem;
+  animation: boxAnim 100s infinite linear;
+}
+
+.box-2 {
+  left: -11rem;
+  top: -23rem;
+  animation: boxAnim 100s -10s infinite linear;
+}
+
+.box-3 {
+  left: 10rem;
+  top: -23rem;
+  animation: boxAnim 100s -20s infinite linear;
+}
+
+.box-4 {
+  left: 25rem;
+  top: -6rem;
+  animation: boxAnim 100s -30s infinite linear;
+}
+
+.box-5 {
+  left: 22rem;
+  top: 13rem;
+  animation: boxAnim 100s -40s infinite linear;
+}
+
+.box-6 {
+  left: 0;
+  top: 25rem;
+  animation: boxAnim 100s -50s infinite linear;
+}
+
+.box-7 {
+  left: -21rem;
+  top: 14rem;
+  animation: boxAnim 100s -60s infinite linear;
+}
+
+.active.box div {
+  width: 16rem;
+  height: 16rem;
+  transition: all 0.2s 0.5s ease-in-out;
+}
+
+.box div {
+  width: 7rem;
+  height: 7rem;
+  position: absolute;
+  opacity: 0.8;
+  box-shadow: 0.1rem 0.1rem 0.1rem #eee inset, -0.1rem -0.1rem 0.1rem #eee inset,
+    0.1rem 0.1rem 3.5rem rgba(255, 255, 255, 0.2),
+    -0.1rem -0.1rem 3.5rem rgba(255, 255, 255, 0.2);
+}
+
+.box-1 div {
+  /* JS */
+  background-color: #efd81d;
+}
+
+.box-2 div {
+  /* React */
+  background-color: #61dbfb;
+}
+
+.box-3 div {
+  /* Vue */
+  background-color: #41b883;
+}
+
+.box-4 div {
+  /* Angular */
+  background-color: #b52e31;
+}
+
+.box-5 div {
+  /* Node */
+  background-color: #43853d;
+}
+
+.box-6 div {
+  /* Sass */
+  background-color: #cf649a;
+}
+
+.box-7 div {
+  /* Ember */
+  background-color: #e04e39;
+}
+
+.top-side {
+  transform: rotateX(90deg) translateZ(3.5rem);
+}
+
+.bottom-side {
+  transform: rotateX(90deg) translateZ(-3.5rem);
+}
+
+.front-side {
+  transform: translateZ(3.5rem);
+}
+
+.back-side {
+  transform: translateZ(-3.5rem);
+}
+
+.right-side {
+  transform: rotateY(-90deg) translateX(3.5rem);
+  transform-origin: right;
+}
+
+.left-side {
+  transform: rotateY(90deg) translateX(-3.5rem);
+  transform-origin: left;
+}
+
+.active .top-side {
+  transform: rotateX(90deg) translateZ(8rem);
+}
+
+.active .bottom-side {
+  transform: rotateX(90deg) translateZ(-8rem);
+}
+
+.active .front-side {
+  transform: translateZ(8rem);
+}
+
+.active .back-side {
+  transform: translateZ(-8rem);
+}
+
+.active .right-side {
+  transform: rotateY(-90deg) translateX(8rem);
+  transform-origin: right;
+}
+
+.active .left-side {
+  transform: rotateY(90deg) translateX(-8rem);
+  transform-origin: left;
+}
